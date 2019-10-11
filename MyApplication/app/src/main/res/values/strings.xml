@@ -4,5 +4,6 @@
     <string name="login_name">Login</string>
     <string name="login_password">Senha</string>
     <string name="title_activity_second">Segunda Tela</string>
+    <string name="title_activity_third">ThirdActivity</string>
 
 </resources>

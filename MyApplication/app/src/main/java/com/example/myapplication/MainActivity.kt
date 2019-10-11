@@ -32,6 +32,18 @@ class MainActivity : AppCompatActivity() {
 
         */
 
+        val user1 = User("User1", "pass")
+        val user2 = User("User2", "pass")
+        val user3 = User("User3", "pass")
+
+        val numbers = mutableListOf(user1, user2)
+        numbers.add(0, user3)
+
+        numbers.forEach({
+            Log.d("lista", it.userName)
+        }
+        )
+
         val intent = Intent(this, SecondActivity::class.java)
 
         val bundle = Bundle()
