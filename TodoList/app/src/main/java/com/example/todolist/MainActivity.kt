@@ -3,7 +3,9 @@ package com.example.todolist
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.adapter.TodoListAdapter
 import com.example.todolist.models.TodoList
 import kotlinx.android.synthetic.main.activity_main.*
@@ -26,8 +28,12 @@ class MainActivity : AppCompatActivity() {
         todoLists.add(todoList3)
 
         val linearLayoutManager = LinearLayoutManager(this)
+        val decoration =
+            DividerItemDecoration(this, linearLayoutManager.orientation)
+
 
         todo_list.layoutManager = linearLayoutManager
+        todo_list.addItemDecoration(decoration)
         todo_list.adapter = todoListAdapter
 
 

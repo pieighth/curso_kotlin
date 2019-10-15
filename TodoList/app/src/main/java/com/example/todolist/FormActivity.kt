@@ -5,10 +5,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBar
+import com.example.todolist.models.TodoList
 import kotlinx.android.synthetic.main.activity_form.*
 
 class FormActivity : AppCompatActivity() {
 
+    val ID_REQUEST = 777
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form)
@@ -24,4 +26,6 @@ class FormActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    
 }
