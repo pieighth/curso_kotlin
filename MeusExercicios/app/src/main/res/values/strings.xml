@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MeusExercicios</string>
+    <string name="login_name">Login</string>
+    <string name="login_email">Informe o seu e-mail</string>
+    <string name="login_senha">Senha</string>
+    <string name="login_password">Informe sua senha</string>
+    <string name="login_button">Logar</string>
+    <string name="dashboard_add_btn">Novo</string>
+    <string name="todo_list_description">Tarefa</string>
+    <string name="todo_list_status">Concluida</string>
+</resources>
