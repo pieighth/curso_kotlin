@@ -34,9 +34,7 @@ class TodoAdapter(private val todos: MutableList<Todo>): RecyclerView.Adapter<To
     class TodoViewHolder(val view: View) : RecyclerView.ViewHolder(view){
         fun bindData(todo: Todo, position: Int){
 
-            view.todo_list_description.text = if (todo != null) {
-                todo.Description
-            } else null
+            
         }
     }
 }
