@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 
 import br.com.peagah.mycrazyapp.R
+import br.com.peagah.mycrazyapp.R.id.pages
 import br.com.peagah.mycrazyapp.adapters.FragmentTabs
 import kotlinx.android.synthetic.main.fragment_login.*
 
@@ -32,7 +33,9 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         
             login_button.setOnClickListener {
-                FragmentTabs()
+                    fragmentManager?.beginTransaction()?.add(pages, MainLoggedFragment(), "tabs")
+                        ?.commit()
+
             }
     }
 
