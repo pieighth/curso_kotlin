@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="home fragment"
-    />
-</LinearLayout>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.aulareview.viewmodels.HomeViewModel" />
+
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{viewModel.user.name}"
+        tools:text ="Vai garoto"
+        />
+     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{viewModel.user.email}"
+        tools:text ="Vai garoto"
+        />
+     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{viewModel.user.password}"
+        tools:text ="Vai garoto"
+        />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.user.name}"/>
+    </LinearLayout>
+</layout>
