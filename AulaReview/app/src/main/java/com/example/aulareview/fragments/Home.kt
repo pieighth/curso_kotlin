@@ -30,7 +30,6 @@ class Home : Fragment(){
         binding.viewModel = viewModel
         viewModel.user.set(User("joao", "mail.mao", "1234"))
 
-
         binding.lifecycleOwner = this
 
         return binding.root
