@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 
 import com.example.vendeja.R
+import com.example.vendeja.features.UserSessionViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 
 /**
@@ -16,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
  */
 class LoginFragment : Fragment() {
 
+    private val viewModel: UserSessionViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +35,7 @@ class LoginFragment : Fragment() {
         val navController = findNavController()
 
         btn_login.setOnClickListener {
-            navController.navigate(R.id.home_graph)
+            viewModel.authenticationState.value = UserSessionViewModel.AuthenticationState.AUTHENTICATED
         }
     }
 }

@@ -2,38 +2,55 @@ package com.example.vendeja
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
+import com.example.vendeja.features.UserSessionViewModel
 import com.example.vendeja.utils.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var finalHost: NavHostFragment
     lateinit var bottomNavigationView: BottomNavigationView
-    private var isLogged : Boolean = true
-
+    private var isLogged : Boolean = false
+    private val viewModel: UserSessionViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_main)
 
-        if (isLogged){
-            mainFlow()
-        }else{
-            loginFlow()
 
-        }
+        viewModel.authenticationState.observe(this/*viewLifeCycleOwner*/, Observer { authenticationState ->
+            when (authenticationState) {
+                UserSessionViewModel.AuthenticationState.AUTHENTICATED -> {
+                    supportFragmentManager.beginTransaction().remove(finalHost).commitNow()
+                    mainFlow()
+                }
+                UserSessionViewModel.AuthenticationState.UNAUTHENTICATED ->{
+                    loginFlow()
+                }
+                else -> bottomNavigationView.visibility = View.GONE
+            }
+        })
+
+
     }
 
     private fun loginFlow() {
-        val finalHost = NavHostFragment.create(R.navigation.auth_graph)
+        bottomNavigationView.visibility = View.GONE
+
+        if(!::finalHost.isInitialized) {
+            finalHost = NavHostFragment.create(R.navigation.auth_graph)
+        }
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_main_host, finalHost)
             .setPrimaryNavigationFragment(finalHost) // this is the equivalent to app:defaultNavHost="true"
             .commit()
-        bottomNavigationView.visibility = View.GONE
     }
     private fun mainFlow(){
+        bottomNavigationView.visibility = View.VISIBLE
 
         val navGraphIds = listOf(R.navigation.home_graph, R.navigation.settings_graph)
 
@@ -44,6 +61,5 @@ class MainActivity : AppCompatActivity() {
             containerId = R.id.fragment_main_host,
             intent = intent
         )
-        bottomNavigationView.visibility = View.VISIBLE
 }
 }
