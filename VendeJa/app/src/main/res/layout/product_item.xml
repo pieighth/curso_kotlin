@@ -1,27 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:backgroundTint="#C5F1FC">
+    android:layout_height="match_parent"
+    >
 
-    <TextView
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/id_product_name"
+        android:id="@+id/guideTop"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".6"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideBottom"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".9"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideLeft"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".05"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideRight"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".95"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_one"
+        android:text="Button 1"
+        app:layout_constraintTop_toTopOf="@id/guideTop"
+        app:layout_constraintBottom_toTopOf="@id/btn_two"
+        app:layout_constraintStart_toStartOf="@id/guideLeft"
+        app:layout_constraintEnd_toEndOf="@id/guideRight"
 
         />
-    <TextView
-        android:layout_width="match_parent"
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/id_product_price"
-
+        android:id="@+id/btn_two"
+        android:text="Button 2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/btn_one"
+        app:layout_constraintBottom_toTopOf="@id/btn_three"
+        app:layout_constraintStart_toStartOf="@id/guideLeft"
+        app:layout_constraintEnd_toEndOf="@id/guideRight"
         />
-    <TextView
-        android:layout_width="match_parent"
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/id_product_url"
+        android:id="@+id/btn_three"
+        android:text="Button 3"
+        app:layout_constraintTop_toBottomOf="@id/btn_two"
+        app:layout_constraintBottom_toBottomOf="@id/guideBottom"
+        app:layout_constraintStart_toStartOf="@id/guideLeft"
+        app:layout_constraintEnd_toEndOf="@id/guideRight"
         />
+<!--    <TextView-->
+<!--        android:id="@+id/id_product_name"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="aaa"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/id_product_price"-->
+<!--        app:layout_constraintHorizontal_chainStyle="spread_inside"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        />-->
 
-</LinearLayout>
+<!--    <TextView-->
+<!--        android:id="@+id/id_product_price"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="bbb"-->
+<!--        app:layout_constraintStart_toEndOf="@id/id_product_name"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/id_product_url"-->
+
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/id_product_url"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="ccc"-->
+
+<!--        app:layout_constraintStart_toEndOf="@id/id_product_price"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--    app:layout_constraintTop_toTopOf="parent"-->
+<!--    app:layout_constraintBottom_toBottomOf="parent"-->
+
+<!--/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
