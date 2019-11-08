@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -53,9 +55,9 @@ dependencies {
 
 
 //    def nav_version = "2.2.0-rc01"
-    def nav_version = "2.2.0-rc01"
+    def nav_version = "2.2.0-rc02"
 
-    def lifecycle_version = "2.2.0-rc01"
+    def lifecycle_version = "2.2.0-rc02"
     // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"

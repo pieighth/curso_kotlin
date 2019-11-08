@@ -1,10 +1,12 @@
-package com.example.vendeja.features.home
+package com.example.vendeja.features.product
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vendeja.R
+import com.example.vendeja.features.home.HomeFragmentDirections
 import com.example.vendeja.models.Product
 import kotlinx.android.synthetic.main.product_item.view.*
 
@@ -15,6 +17,10 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val inflate = inflater.inflate(R.layout.product_item, parent, false)
+
+        inflate.setOnClickListener {
+            it.findNavController().navigate(HomeFragmentDirections.listToDetail(1))
+        }
         return ProductViewHolder(inflate)
     }
 
@@ -37,6 +43,8 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(
             view.id_product_name.text = product.name.toString()
             view.id_product_price.text = product.price.toString()
             view.id_product_url.text = product.imageUrl.toString()
+
+
         }
     }
 }

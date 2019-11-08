@@ -11,10 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.vendeja.R
 import com.example.vendeja.features.UserSessionViewModel
+import com.example.vendeja.features.product.ProductAdapter
 import com.example.vendeja.models.Product
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_setting.*
-import java.lang.Math.random
 
 /**
  * A simple [Fragment] subclass.

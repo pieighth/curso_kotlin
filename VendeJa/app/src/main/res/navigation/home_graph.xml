@@ -8,6 +8,26 @@
         android:id="@+id/home"
         android:name="com.example.vendeja.features.home.HomeFragment"
         tools:layout="@layout/fragment_home"
-        />
+        >
+        <action
+            android:id="@+id/list_to_detail"
+            app:destination="@id/product_detail"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/product_detail"
+        android:name="com.example.vendeja.features.product.ProductDetail"
+        tools:layout="@layout/fragment_product_detail"
+        >
+
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0"
+            />
+    </fragment>
+
+
 
 </navigation>
