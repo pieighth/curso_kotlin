@@ -5,6 +5,11 @@
         android:icon="@drawable/ic_home_black_24dp"
 
         />
+    <item android:title="Publish"
+        android:id="@+id/publish_graph"
+        android:icon="@drawable/ic_edit_black_24dp"
+
+        />
     <item android:title="Settings"
         android:id="@+id/settings_graph"
         android:icon="@drawable/ic_settings_black_24dp"
