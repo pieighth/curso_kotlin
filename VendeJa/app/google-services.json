@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1091384378299",
+    "firebase_url": "https://vendeja-am.firebaseio.com",
+    "project_id": "vendeja-am",
+    "storage_bucket": "vendeja-am.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091384378299:android:ff1fbc26f4121c9c62ba9e",
+        "android_client_info": {
+          "package_name": "com.example.vendeja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091384378299-04p235tncrhviu2s21rd8vt6420oki38.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVoW57mG0G3XzvMI_cBLWdx79Q0m0MQBM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091384378299-04p235tncrhviu2s21rd8vt6420oki38.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

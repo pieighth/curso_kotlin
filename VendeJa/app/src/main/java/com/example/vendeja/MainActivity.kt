@@ -9,9 +9,12 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.vendeja.features.UserSessionViewModel
 import com.example.vendeja.utils.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var finalHost: NavHostFragment
     lateinit var bottomNavigationView: BottomNavigationView

@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 
 import com.example.vendeja.R
 import com.example.vendeja.features.UserSessionViewModel
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_login.*
 
 /**
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
 class LoginFragment : Fragment() {
 
     private val viewModel: UserSessionViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,6 +38,21 @@ class LoginFragment : Fragment() {
 
         btn_login.setOnClickListener {
             viewModel.authenticationState.value = UserSessionViewModel.AuthenticationState.AUTHENTICATED
+            ValidateLogin(id_login_email.text.toString(), id_login_password.text.toString())
+        }
+    }
+
+    fun ValidateLogin(email: String, password: String){
+        activity?.let {
+            viewModel.auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(it){
+                task ->
+                if (task.isSuccessful) {
+                    viewModel.authenticationState.value = UserSessionViewModel.AuthenticationState.AUTHENTICATED
+                }else{
+                    viewModel.authenticationState.value = UserSessionViewModel.AuthenticationState.UNAUTHENTICATED
+                }
+
+            }
         }
     }
 }
