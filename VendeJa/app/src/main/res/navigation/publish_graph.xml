@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/publish_graph"
-    app:startDestination="@id/publish">
+    app:startDestination="@id/list_publish">
 <fragment
     android:id="@+id/publish"
     android:name="com.example.vendeja.features.publish.PublishFragment"
@@ -19,4 +19,14 @@
         android:id="@+id/confirmation_id"
         android:name="com.example.vendeja.features.publish.ConfirmationFragment"
         />
+    <fragment
+        android:id="@+id/list_publish"
+        android:name="com.example.vendeja.features.publish.ListPublishFragment"
+        tools:layout="@layout/fragment_list_publish"
+        >
+        <action
+            android:id="@+id/nav_to_publish"
+            app:destination="@id/publish"
+            />
+    </fragment>
 </navigation>

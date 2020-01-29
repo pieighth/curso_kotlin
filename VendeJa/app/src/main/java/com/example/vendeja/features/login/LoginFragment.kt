@@ -38,11 +38,14 @@ class LoginFragment : Fragment() {
 
         btn_login.setOnClickListener {
             viewModel.authenticationState.value = UserSessionViewModel.AuthenticationState.AUTHENTICATED
-            ValidateLogin(id_login_email.text.toString(), id_login_password.text.toString())
+
+            //ValidateLogin(id_login_email.text.let { it.toString() }, id_login_password.text.let { it.toString() })
         }
     }
 
     fun ValidateLogin(email: String, password: String){
+
+
         activity?.let {
             viewModel.auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(it){
                 task ->

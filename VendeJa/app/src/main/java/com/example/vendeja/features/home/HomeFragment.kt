@@ -13,6 +13,7 @@ import com.example.vendeja.R
 import com.example.vendeja.features.UserSessionViewModel
 import com.example.vendeja.features.product.ProductAdapter
 import com.example.vendeja.models.Product
+import com.example.vendeja.models.database.ProductDB
 import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
@@ -32,16 +33,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val myList = mutableListOf<Product>()
-        myList.add(Product(1,"produto 1", 244, "image1.jpg"))
-        myList.add(Product(2,"produto 2", 12341, "image12.jpg"))
-        myList.add(Product(3,"produto 3", 244, "image3.jpg"))
-        myList.add(Product(4,"produto 4", 1244, "image32.jpg"))
-        myList.add(Product(5,"produto 5", 244, "image4.jpg"))
-        myList.add(Product(6,"produto 6", 44, "image122.jpg"))
-        myList.add(Product(7,"produto 7", 244, "image15.jpg"))
-        myList.add(Product(8,"produto 8", 44, "image13.jpg"))
-        myList.add(Product(9,"produto 9", 244, "image11.jpg"))
+        val myList = mutableListOf<ProductDB>()
+
 
         val layoutManager = LinearLayoutManager(activity)
         productAdapter.setData(myList)
