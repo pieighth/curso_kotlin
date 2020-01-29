@@ -35,6 +35,15 @@ class HomeFragment : Fragment() {
 
         val myList = mutableListOf<ProductDB>()
 
+//        myList.add(1, ProductDB(
+//           "abc4qiwfq",
+//            "Algum produto",
+//            "image.jpg",
+//                123.30f,
+//            "Meu produto",
+//            4.5f
+//
+//        ))
 
         val layoutManager = LinearLayoutManager(activity)
         productAdapter.setData(myList)

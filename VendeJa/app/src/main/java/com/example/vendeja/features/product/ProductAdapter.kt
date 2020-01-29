@@ -41,7 +41,7 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(
     class ProductViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun bindData(product: ProductDB, position: Int) {
             view.id_product_name.text = product.produto.toString()
-            view.id_product_price.text = product.price.toString()
+//            view.id_product_price.text = product.price.toString()
             view.id_product_url.text = product.imageUrl.toString()
 
 
