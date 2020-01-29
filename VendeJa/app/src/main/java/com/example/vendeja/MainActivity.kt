@@ -9,9 +9,12 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.vendeja.features.UserSessionViewModel
 import com.example.vendeja.utils.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var finalHost: NavHostFragment
     lateinit var bottomNavigationView: BottomNavigationView
@@ -22,13 +25,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_main)
 
-        setup()
 
         viewModel.authenticationState.observe(
             this/*viewLifeCycleOwner*/,
             Observer { authenticationState ->
                 when (authenticationState) {
                     UserSessionViewModel.AuthenticationState.AUTHENTICATED -> {
+                        supportFragmentManager.beginTransaction().remove(finalHost).commitNow()
                         mainFlow()
                     }
                     UserSessionViewModel.AuthenticationState.UNAUTHENTICATED -> {
@@ -56,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             finalHost = NavHostFragment.create(R.navigation.auth_graph)
         }
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_login_host, finalHost)
+            .replace(R.id.fragment_main_host, finalHost)
             .setPrimaryNavigationFragment(finalHost) // this is the equivalent to app:defaultNavHost="true"
             .commit()
 
@@ -66,16 +69,30 @@ class MainActivity : AppCompatActivity() {
 
     private fun loginFlow() {
         bottomNavigationView.visibility = View.GONE
-        fragment_login_host.visibility = View.VISIBLE
-        fragment_main_host.visibility = View.GONE
+
+        if(!::finalHost.isInitialized) {
+            finalHost = NavHostFragment.create(R.navigation.auth_graph)
+        }
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_main_host, finalHost)
+            .setPrimaryNavigationFragment(finalHost) // this is the equivalent to app:defaultNavHost="true"
+            .commit()
 
 
     }
 
     private fun mainFlow() {
         bottomNavigationView.visibility = View.VISIBLE
-        fragment_login_host.visibility = View.GONE
-        fragment_main_host.visibility = View.VISIBLE
+
+        val navGraphIds = listOf(R.navigation.home_graph, R.navigation.publish_graph, R.navigation.settings_graph)
+
+        // Setup the bottom navigation view with a list of navigation graphs
+        bottomNavigationView.setupWithNavController(
+            navGraphIds = navGraphIds,
+            fragmentManager = supportFragmentManager,
+            containerId = R.id.fragment_main_host,
+            intent = intent
+        )
 
     }
 

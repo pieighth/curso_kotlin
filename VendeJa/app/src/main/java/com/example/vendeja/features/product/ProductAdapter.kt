@@ -7,12 +7,12 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vendeja.R
 import com.example.vendeja.features.home.HomeFragmentDirections
-import com.example.vendeja.models.Product
+import com.example.vendeja.models.database.ProductDB
 import kotlinx.android.synthetic.main.product_item.view.*
 
 class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
-    private var products: MutableList<Product> = mutableListOf()
+    private var products: MutableList<ProductDB> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -29,7 +29,7 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(
 
     }
 
-    fun setData(products: MutableList<Product>) {
+    fun setData(products: MutableList<ProductDB>) {
         this.products = products
     }
 
@@ -39,8 +39,8 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(
     }
 
     class ProductViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        fun bindData(product: Product, position: Int) {
-            view.id_product_name.text = product.name.toString()
+        fun bindData(product: ProductDB, position: Int) {
+            view.id_product_name.text = product.produto.toString()
             view.id_product_price.text = product.price.toString()
             view.id_product_url.text = product.imageUrl.toString()
 
